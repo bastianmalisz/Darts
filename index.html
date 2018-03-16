@@ -4,15 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.slim.js"
+  integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
+  crossorigin="anonymous"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,500" rel="stylesheet">
     <!-- Główny plik styli projektu -->
     <link href="rzutki-css.css" rel="stylesheet">
     <title>Rzutki Game</title>
 </head>
 <body>
-    <div class="container">
-        asdas
+    
+                <div class="container gameWindow displayNone">
+                        <h1>Gra numer: <span class="gameWindow--gameNumber"></span></h1>
+                        <div class="gameWindow__inner">
+                            <div class="gameWindow__tableBox">
+                                <table class="gameWindow__tableBox__table">
+                                   
+                                </table>
+                                
+                            </div>
+                            <div class="gameWindow__facts">
+                            <div class="bestWorst__row">
+                                <div class="gameWindow__facts__bestThrow">
+                                    <h4>Najlepszy rzut:</h4>
+                                    <div class="gameWindow__facts__bestThrow--who">Name</div>
+                                    <div class="gameWindow__facts__bestThrow--amount">Result</div>
+                                </div>
+                                <div class="gameWindow__facts__bestThrowEver">
+                                        <h4>NAjlepszy rzut kiedykolwiek:</h4>
+                                    <div class="gameWindow__facts__bestThrowEver--who"></div>
+                                    <div class="gameWindow__facts__bestThrowEver--amount">Result</div>
+                                </div>
+                            </div>
+                                <div class="gameWindow__facts__leaderboard">
+                                    <div class="gameWindow__facts__leaderboard--first"><span class="firstPlace">Name</span></div>
+                                    <div class="gameWindow__facts__leaderboard--second"><span class="secondPlace">Name</span></div>
+                                    <div class="gameWindow__facts__leaderboard--third"><span class="thirdPlace">Name</span></div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <button class="gameWindow__tableBox__btn">Dodaj wynik</button>
+                        
+                        <input class="gameWindow__tableBox__input" type="number" >
+                    </div>
+
+
+
+
+    
+
+    <div class="container playerAmount">
+        <h1>Ilu graczy będzie grać?</h1>
+            <input class="playerAmount--input" type="number" min="0" max="6" required placeholder="max 6">
+            <button class="playerAmount-btn">Ok</button>
+    </div>
+    <div class="container players displayNone">
+        <h1>Ustaw graczy:</h1>
+        <div class="addPlayers">
+        
+    </div>
+    <div class="addPlayers__btnHandler">
+        <button class="addPlayers__btnAdd">Dodaj graczy</button>
+    </div>
+    </div>
     </div>
     <!-- skrypty projektu -->
-    <script src= "scripts.js"></script>
+    
+    <script src="./scripts/validate.js"></script>
 </body>
 </html>

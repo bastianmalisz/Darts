@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    html,body{
+        margin:0;
+        padding:0;
+        position: relative;
+    }
+    .container{
+        width:1000px;
+        margin:0 auto;
+    }
+    .gameWindow{
+        border:1px solid black;
+        margin-top:20px;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .gameWindow__inner{
+        display:flex;
+        justify-content: space-around;
+        flex-direction: row;
+        align-items: center;
+        width:95%;
+        border:1px solid black;
+    }
+    .gameWindow__table, .gameWindow__facts{
+        width:48%;
+        
+        margin:10px;
+        border:1px solid red;
+        display:flex;
+        justify-content: center;
+        flex-direction: row;
+        align-items: center;
+    }
+    tr >th{
+        border: solid 1px red;
+        
+    }
+    td{
+        border: 1px dashed blue;
+    }
+    </style>
+</head>
+<body>
+    <div class="container gameWindow">
+        <h1>Gra numer: <span class="gameWindow--gameNumber"></span></h1>
+        <div class="gameWindow__inner">
+            <div class="gameWindow__table">
+                <table>
+                    <tr>
+                        <th>Osoba1</th>
+                        <th>Osoba2</th>
+                        <th>Osoba3</th>
+                        <th>Osoba4</th>
+                        <th>Osoba5</th>
+                    </tr>
+                    <tr>
+                        <td>wynik1</td>
+                        <td>wynik2</td>
+                        <td>wynik3</td>
+                        <td>wynik4</td>
+                        <td>wynik5</td>
+                        
+                    </tr>
+                </table>
+            </div>
+            <div class="gameWindow__facts"></div>
+        </div>
+    </div>
+</body>
+</html>

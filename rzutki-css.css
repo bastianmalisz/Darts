@@ -1,6 +1,289 @@
 html, body{
-    margin:0;
-    padding:0;
+    font-family: 'Montserrat', sans-serif;
     font-size:16px;
     box-sizing: border-box;
+    position: relative;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;   
+}
+
+/* Reusable classes */
+.displayNone{
+    display:none !important;
+}
+.container{
+    
+    margin:0 30px;
+    box-sizing: content-box;   
+
+}
+
+/* Main settings */
+.playerAmount{
+    border-radius: 10px;
+    border:1px solid rgba(226, 226, 226, 0.158);
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    box-shadow: 15px 30px 70px rgba(187, 185, 185, 0.438);
+}
+.playerAmount > h1, .players >h1{
+    text-align: center;
+    font-weight:300;
+    
+}
+.playerAmount--input{
+    background-color: transparent;
+    font-size:3rem;
+    outline:0;
+    text-align: center;
+    border:0px;
+    border-radius: 5px;
+    border:1px solid rgba(226, 226, 226, 0.158);
+}
+.playerAmount--input:focus{
+    box-shadow: 0px 0px 8px rgba(61, 61, 61, 0.747);
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.playerAmount--input::placeholder{
+    font-size:1.5rem;
+    text-align: center;
+    opacity:0.5;
+}
+button{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.playerAmount-btn{
+    font-weight: 300;
+    font-size:1.5rem;
+    letter-spacing: 2px;
+    border:0px;
+    border-radius: 5px;
+    background-color: white;
+    padding-right:20px;
+    padding-left:20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    
+}
+
+/* Add players popup */
+.players{
+    border-radius: 10px;
+    border:1px solid rgba(226, 226, 226, 0.158);
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    box-shadow: 15px 30px 70px rgba(187, 185, 185, 0.438);
+    margin-top: 10px;
+}
+
+.addPlayers{ 
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;  
+}
+.addPlayers__player{
+    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:20px;
+    margin-left:15px;
+    border-radius:10px;
+    width: calc(100% / 7);
+    box-shadow: 5px 5px 25px rgba(112, 112, 112, 0.475);
+    opacity:0.8;
+}
+.addPlayers__player>h2{
+font-weight: 300;
+font-size:16px;
+}
+.addPlayers__player--name{
+    font-size:2.1rem;
+    text-align:center;
+    border:0px;
+    border-radius:5px;
+    margin-bottom:20px;
+    width:90%;
+
+}
+.addPlayers__player--color{
+    border:0px;
+    width:40%;
+    margin-top:-10px;
+    margin-bottom:20px;
+}
+.addPlayers__btnHandler{
+    width:100%;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.addPlayers__btnAdd{
+    font-size: 2.25rem;
+    font-weight:300;
+    background-color: transparent;
+    padding:10px;
+    margin-top:20px;
+    margin-bottom: 20px;
+    border: 0px;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+}
+.addPlayers__btnAdd:hover{
+    box-shadow:0 0 5px black;
+    border-radius: 10px;
+}
+
+.gameWindow{
+    border:1px solid black;
+    margin-top:10px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.gameWindow__inner{
+    display:flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    width:95%;
+    border:1px solid black;
+}
+.gameWindow__tableBox, .gameWindow__facts{
+    width:48%;
+    
+    margin:10px;
+    border:1px solid red;
+    display:flex;
+    
+    flex-direction: row;
+    
+}
+table{
+width:100%;
+}
+tr >th{
+    text-align: center;
+    font-size:3.5rem;
+    border: solid 1px red;
+    
+}
+td{
+    font-size:1.5rem;
+    border: 1px dashed blue;
+    text-align: center;
+    height: 20px; 
+}
+
+.gameWindow__tableBox__btn{
+font-size:2rem;
+margin-top:50px;
+}
+.tableCell__throwPTS{
+    font-size: 0.8rem;
+    color:slategrey;
+    position:relative;
+}
+.highestScore{
+    background-color:red;
+}
+
+.gameWindow__facts{
+    display:flex;
+    justify-content: space-around;
+    flex-direction: column;
+   
+    
+}
+.bestWorst__row{
+    display:flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: baseline;
+    width:100%;
+}
+.gameWindow__facts__bestThrow{
+    border:1px solid blue;
+}
+.gameWindow__facts__bestThrowEver{
+    border:1px solid yellow;
+}
+.gameWindow__facts__leaderboard
+{
+    
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    width:100%;
+}
+.gameWindow__facts__leaderboard--first{
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+   align-self: flex-start;
+    border-radius:10px;
+   
+    
+    
+}
+.gameWindow__facts__leaderboard--second{
+    background: linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%), radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%);
+ background-blend-mode: screen;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+     
+     
+     
+     width: 80%;
+     
+ }
+ .gameWindow__facts__leaderboard--third{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    background-image: linear-gradient(to top, #e6b980 0%, #eacda3 100%);
+     
+     width: 60%;
+
+     
+ }
+ .firstPlace{
+     font-size: 1.5rem;
+     background-color:gold;
+     padding: 4px;
+     opacity: 0.8;
+ }
+ .secondPlace{
+    font-size: 1.2rem;
+    background-color:silver;
+    padding: 4px;
+    opacity: 0.8;
+}
+.thirdPlace{
+    font-size: 0.9rem;
+    background-color:rgba(141, 107, 14, 0.582);
+    padding: 1px;
+    opacity: 0.7;
 }
