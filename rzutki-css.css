@@ -1,5 +1,5 @@
 html, body{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Source Code Pro', monospace;
     font-size:16px;
     box-sizing: border-box;
     position: relative;
@@ -148,7 +148,7 @@ font-size:16px;
 }
 
 .gameWindow{
-    border:1px solid black;
+    
     margin-top:10px;
     display:flex;
     flex-direction: column;
@@ -160,38 +160,110 @@ font-size:16px;
     display:flex;
     justify-content: flex-start;
     flex-direction: row;
+    margin-top:10px;
     width:95%;
-    border:1px solid black;
+    
 }
 .gameWindow__tableBox, .gameWindow__facts{
     width:48%;
     
     margin:10px;
-    border:1px solid red;
+    
     display:flex;
     
     flex-direction: row;
     
 }
+.gameWindow__headers{
+    font-size:0.8rem;
+    font-family: 'Source Code Pro', monospace;
+font-weight: 300;
+    display:flex;
+    justify-content: space-between;
+    flex-direction: row;
+    box-shadow: 5px 5px 25px rgba(184, 183, 183, 0.452);
+    width:100%;
+}
+.gameWindow__headers > h1{
+    margin-left: 50px;
+    margin-right: 50px;
+    color: rgba(105, 105, 105, 0.76)
+}
 table{
+    
+    border: 1px solid rgba(165, 159, 159, 0.397);
 width:100%;
+border-collapse: separate;
+}
+caption{
+    font-size:1.6rem;
 }
 tr >th{
     text-align: center;
-    font-size:3.5rem;
-    border: solid 1px red;
+    font-size:2.1rem;
+    font-weight:500;
+    border-bottom: 1px solid rgba(165, 159, 159, 0.397);
+    border-left: 3px solid rgba(165, 159, 159, 0.247);
+    
+    
     
 }
+.gameWindow--gameTime{
+    color: rgba(202, 29, 29, 0.74);
+}
+.gameWindow__tableBox__table--tr-1{
+   
+    color: rgba(105, 105, 105, 0.76);
+    font-weight:300;
+}
 td{
-    font-size:1.5rem;
-    border: 1px dashed blue;
+    font-family: 'Indie Flower', cursive;
+    font-weight:500;
+    
+    font-size:1.8rem;
     text-align: center;
     height: 20px; 
-}
+    border-collapse: separate;
+    padding-right: 10px;
+    opacity:0.8;
 
+}
+.gameWindow__tableBox__input{
+    font-size:1.5rem;
+    text-align: center;
+    border: 0px;
+    border-bottom: 1px solid rgba(139, 133, 133, 0.473);
+    border-left: 1px solid rgba(139, 133, 133, 0.473);
+    margin-top:10px;
+    width: 100px;
+    height: 30px;
+    outline: none;
+    transition: 0.35s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color:rgba(202, 29, 29, 0.74);
+    
+}.gameWindow__tableBox__input:hover{
+    background-color: rgba(214, 205, 205, 0.39);
+}
+.gameWindow__tableBox__input:focus{
+    box-shadow: 0px 0px 4px rgba(145, 141, 141, 0.493);
+}
 .gameWindow__tableBox__btn{
-font-size:2rem;
-margin-top:50px;
+font-size:1rem;
+margin-top:10px;
+width: 100px;
+height:50px;
+border: 0px;
+    border-bottom: 1px solid rgba(139, 133, 133, 0.473);
+    border-left: 1px solid rgba(139, 133, 133, 0.473);
+    border-radius: 10px;
+    background-color: transparent;
+    box-shadow: 0px 3px 5px rgba(168, 161, 161, 0.219);
+    transition: 0.35s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    
+}
+.gameWindow__tableBox__btn:hover{
+    box-shadow: 0px 1px 2px rgba(66, 65, 65, 0.74);
 }
 .tableCell__throwPTS{
     font-size: 0.8rem;
@@ -217,73 +289,98 @@ margin-top:50px;
     width:100%;
 }
 .gameWindow__facts__bestThrow{
-    border:1px solid blue;
-}
-.gameWindow__facts__bestThrowEver{
-    border:1px solid yellow;
-}
-.gameWindow__facts__leaderboard
-{
+    padding:15px;
     
+    box-shadow: 5px 15px 35px rgba(184, 183, 183, 0.452);
+    
+    
+}
+.gameWindow__facts__leaderboard{
+    padding:15px;
+    margin-left:20px;
     display:flex;
     justify-content: center;
     align-items: center;
     align-content: center;
     flex-direction: column;
     width:100%;
-}
-.gameWindow__facts__leaderboard--first{
-    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
-                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
-    width: 100%;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-   align-self: flex-start;
-    border-radius:10px;
-   
+    box-shadow: 5px 15px 35px rgba(184, 183, 183, 0.452);
     
-    
-}
-.gameWindow__facts__leaderboard--second{
-    background: linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%), radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%);
- background-blend-mode: screen;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    align-self: flex-start;
-     
-     
-     
-     width: 80%;
-     
- }
- .gameWindow__facts__leaderboard--third{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    align-self: flex-start;
-    background-image: linear-gradient(to top, #e6b980 0%, #eacda3 100%);
-     
-     width: 60%;
 
-     
- }
- .firstPlace{
-     font-size: 1.5rem;
-     background-color:gold;
-     padding: 4px;
-     opacity: 0.8;
- }
- .secondPlace{
-    font-size: 1.2rem;
-    background-color:silver;
-    padding: 4px;
-    opacity: 0.8;
 }
-.thirdPlace{
-    font-size: 0.9rem;
-    background-color:rgba(141, 107, 14, 0.582);
-    padding: 1px;
-    opacity: 0.7;
+.gameWindow__facts__firstPlace{
+font-size: 2rem;
+}
+
+.gameWindow__facts__bestThrow--who{
+font-size:2.2rem;
+font-weight:500;
+color:rgba(105, 105, 105, 0.76);
+font-weight:bold;
+
+}
+.gameWindow__facts__bestThrow--amount{
+    font-size:2.4rem;
+    font-weight:500;
+    color:rgba(202, 29, 29, 0.74);
+    font-weight:bold;
+    }
+    .gameWindow__facts__bestThrow2--who{
+        font-size:1.4rem;
+        font-weight:500;
+        color:rgba(105, 105, 105, 0.76);
+        
+        
+        }
+        .gameWindow__facts__bestThrow2--amount{
+            font-size:1.6rem;
+            font-weight:500;
+            color:rgba(202, 29, 29, 0.74);
+            
+            }
+            .gameWindow__facts__bestThrow3--who{
+                font-size:1rem;
+                font-weight:500;
+                color:rgba(105, 105, 105, 0.582);
+                
+                
+                }
+                .gameWindow__facts__bestThrow3--amount{
+                    font-size:1.1rem;
+                    font-weight:500;
+                    color:rgba(202, 29, 29, 0.562);
+                    
+                }
+                .gameWindow--gameDay{
+                    color:rgba(202, 29, 29, 0.74);
+                }
+                .gameWindow__facts__leaderboard > h3{
+                    color:rgba(202, 29, 29, 0.74);
+                }
+
+/* Kontrolki gry */
+.controls{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    margin:10px;
+}
+
+.gameWindow__facts__bestEverThrow{
+    border-left: 2px solid rgba(165, 156, 156, 0.336);
+    border-top: 1px solid rgba(165, 156, 156, 0.233);
+    padding:5px;
+    width:90%;
+}
+.gameWindow__facts__fastestGame{
+    border-left: 2px solid rgba(165, 156, 156, 0.336);
+    border-top: 1px solid rgba(165, 156, 156, 0.233);
+    padding:5px;
+    width:90%;
+}
+.gameWindow__facts__bestPlayer{
+    border-left: 2px solid rgba(165, 156, 156, 0.336);
+    border-top: 1px solid rgba(165, 156, 156, 0.233);
+    padding:5px;
+    width:90%;
 }

@@ -10,6 +10,9 @@
   crossorigin="anonymous"></script>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300" rel="stylesheet">
+
     <!-- Główny plik styli projektu -->
     <link href="rzutki-css.css" rel="stylesheet">
     <title>Rzutki Game</title>
@@ -17,38 +20,53 @@
 <body>
     
                 <div class="container gameWindow displayNone">
-                        <h1>Gra numer: <span class="gameWindow--gameNumber"></span></h1>
-                        <div class="gameWindow__inner">
+                    <div class="gameWindow__headers">  
+                    <h1>Gra numer: <span class="gameWindow--gameNumber"></span></h1><h1>Z dnia:  <span class="gameWindow--gameDay"></span></h1><h1>Czas gry: <span class="gameWindow--gameTime"></span></h1>
+                    </div>     
+                    <div class="gameWindow__inner">
                             <div class="gameWindow__tableBox">
                                 <table class="gameWindow__tableBox__table">
+                                        <caption>Tabela wyników</caption>
                                    
                                 </table>
-                                
+                                <div class="controls">
+                                        <button class="gameWindow__tableBox__btn">Dodaj wynik</button>
+                                        <input class="gameWindow__tableBox__input" type="number" >
+                                        </div>
                             </div>
                             <div class="gameWindow__facts">
                             <div class="bestWorst__row">
                                 <div class="gameWindow__facts__bestThrow">
-                                    <h4>Najlepszy rzut:</h4>
+                                    <h3>Najlepszy rzut:</h3>
                                     <div class="gameWindow__facts__bestThrow--who">Name</div>
                                     <div class="gameWindow__facts__bestThrow--amount">Result</div>
+                                   
                                 </div>
-                                <div class="gameWindow__facts__bestThrowEver">
-                                        <h4>NAjlepszy rzut kiedykolwiek:</h4>
-                                    <div class="gameWindow__facts__bestThrowEver--who"></div>
-                                    <div class="gameWindow__facts__bestThrowEver--amount">Result</div>
-                                </div>
-                            </div>
                                 <div class="gameWindow__facts__leaderboard">
-                                    <div class="gameWindow__facts__leaderboard--first"><span class="firstPlace">Name</span></div>
-                                    <div class="gameWindow__facts__leaderboard--second"><span class="secondPlace">Name</span></div>
-                                    <div class="gameWindow__facts__leaderboard--third"><span class="thirdPlace">Name</span></div>
+                                        <h3>Całkowite wyniki</h3>
+                                    <div class="gameWindow__facts__bestEverThrow">
+                                        <h4>Najlepszy rzut w historii</h4>
+                                        <h4 class ="gameWindow__facts__bestEverThrow--who">Kto?</h4>
+                                        <h4 class ="gameWindow__facts__bestEverThrow--who--amount">Ile?</h4>
+                                    </div>
+                                    <div class="gameWindow__facts__fastestGame">
+                                            <h4>Najszybsza gra</h4>
+                                            <h4 class="gameWindow__facts__fastestGame--when">Kiedy?</h4>
+                                            <h4 class="gameWindow__facts__fastestGame--howLong">Jak długo?</h4>
+                                    </div>
+                                    <div class="gameWindow__facts__bestPlayer">
+                                    <h4>Najlepszy gracz</h4>
+                                        <h4 class="gameWindow__facts__bestPlayer--who">Kto?</h4>
+                                        <h4 class="gameWindow__facts__bestPlayer--who--avarage">jaka średnia miejsc?</h4>
+                                    </div>
                                 </div>
+                                
+                            </div>
+                            
                             </div>
                            
                         </div>
-                        <button class="gameWindow__tableBox__btn">Dodaj wynik</button>
                         
-                        <input class="gameWindow__tableBox__input" type="number" >
                     </div>
 
 
