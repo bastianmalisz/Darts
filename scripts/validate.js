@@ -24,7 +24,7 @@ let nowDate = day + "." + month + "." + (year - 100);
 
 document.querySelector(".gameWindow--gameDay").innerHTML = nowDate;
 
-playerAmountBtn.addEventListener("click", function() {
+playerAmountBtn.addEventListener("click", function () {
   if (playerAmountInput.value < 1 || playerAmountInput.value > 6) {
     alert("Musisz wybrać liczbę graczy od 1 do 6");
     return;
@@ -54,24 +54,20 @@ function addPlayers(playerAmountValue) {
       .appendChild(createTextInput)
       .classList.add("addPlayers__player--name");
     for (
-      let j = 0;
-      j < document.querySelectorAll(".addPlayers__player--name").length;
-      j++
+      let j = 0; j < document.querySelectorAll(".addPlayers__player--name").length; j++
     ) {
       document
-        .querySelectorAll(".addPlayers__player--name")
-        [j].setAttribute("type", "text");
+        .querySelectorAll(".addPlayers__player--name")[j].setAttribute("type", "text");
     }
   }
   // Odbieram informacje przy kliknieciu buttona "Dodaj graczy"
   document
     .querySelector(".addPlayers__btnAdd")
     .addEventListener("click", getNames);
+
   function getNames() {
     for (
-      let i = 0;
-      i < document.querySelectorAll(".addPlayers__player--name").length;
-      i++
+      let i = 0; i < document.querySelectorAll(".addPlayers__player--name").length; i++
     ) {
       names[i] = document.querySelectorAll(".addPlayers__player--name")[
         i
@@ -142,7 +138,7 @@ function drawMainPage() {
   }
   document
     .querySelector(".gameWindow__tableBox__btn")
-    .addEventListener("click", function() {
+    .addEventListener("click", function () {
       if (
         document.querySelector(".gameWindow__tableBox__input").value > 180 ||
         document.querySelector(".gameWindow__tableBox__input").value < 0 ||
@@ -200,7 +196,7 @@ function drawMainPage() {
         parseInt(throwScore) +
         parseInt(
           document.querySelector("#l" + (lineNumber - 1) + "r" + clickCount)
-            .textContent
+          .textContent
         );
     } else {
       tableCell.innerHTML = throwScore;
