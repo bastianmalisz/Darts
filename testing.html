@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300" rel="stylesheet">
+    <title>Document</title>
+    <style>
+            html,
+            body {
+                font-family: 'Source Code Pro', monospace;
+                font-size: 16px;
+                box-sizing: border-box;
+                position: relative;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+        .container {
+            margin: 0 auto;
+            width: 1200px;
+           
+        }
+        .results{
+            border-radius: 10px;
+            border: 1px solid rgba(226, 226, 226, 0.158);
+            background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            box-shadow: 15px 30px 70px rgba(187, 185, 185, 0.438);
+        }
+        .results > h1{
+            font-weight: 300;
+        }
+        .results__leaderboard{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width:70%;
+        }
+        .results__leaderboard__box{
+            
+            border:1px solid rgba(189, 189, 189, 0.336);
+            text-align: center;
+            margin:3px;
+            box-shadow: 5px 10px 20px rgba(187, 185, 185, 0.438);
+        }
+        .results__leaderboard__box--first{
+            font-weight:bolder;
+            background: #F7971E;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFD200, #F7971E);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFD200, #F7971E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+opacity:0.8;
+box-shadow: 5px 10px 20px rgba(73, 73, 73, 0.918);
+width:45%;
+        }
+        .results__leaderboard__box--second{
+            background: #8e9eab;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to left, #eef2f3, #8e9eab);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to left, #eef2f3, #8e9eab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            opacity:0.7;
+            box-shadow: 5px 10px 20px rgba(126, 125, 125, 0.521);
+            width:35%;
+        }
+        .results__leaderboard__box--third{
+            background: #e9d362;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to left, #333333, #e9d362);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to left, #333333, #e9d362); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            opacity:0.6;
+            box-shadow: 5px 10px 20px rgba(187, 185, 185, 0.438);
+            width:20%;
+        }
+        .results__facts{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width:70%;
+        }
+        .results__facts__gametime, .results__facts__bestThrow{
+            margin:40px;
+            width: 50%;
+            text-align: center;
+           
+           box-shadow: 5px 10px 20px rgba(187, 185, 185, 0.438);
+        }
+        .results__facts > div > h1{
+            font-weight: 200;
+        }
+        .results__send{
+            font-family: 'Source Code Pro', monospace;
+            font-size:2rem;
+            width: 25%;
+            margin: 10px;
+            border:0px;
+            box-shadow: 2px 5px 10px rgba(187, 185, 185, 0.438);
+            cursor: pointer;
+            transition: 0.35s all cubic-bezier(0.165, 0.84, 0.44, 1);
+            background-color: transparent;
+            border-radius: 10px;
+        }
+        .results__send:hover{
+            box-shadow: 0px 2px 5px rgba(100, 100, 100, 0.733);
+            transform: translateX(-1px) translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container results displayNone">
+        <h1>Wyniki</h1>
+        <div class="results__leaderboard">
+            <div class="results__leaderboard__box results__leaderboard__box--first">
+                <h1>#1</h1>
+                <h2>Imie</h2>
+                <h2>Wynik</h2>
+            </div>
+            <div class="results__leaderboard__box results__leaderboard__box--second">
+                    <h2>#2</h2>
+                    <h3>Imie</h3>
+                    <h3>Wynik</h3>
+            </div>
+            <div class="results__leaderboard__box results__leaderboard__box--third">
+                    <h3>#3</h3>
+                    <h4>Imie</h4>
+                    <h4>Wynik</h4>
+            </div>
+        </div>
+        <div class="results__facts">
+            <div class="results__facts__gametime">
+                <h1> Gra trwała: </h1>
+                <h2>Jak długo?</h2>
+            </div>
+            <div class="results__facts__bestThrow">
+                <h1> Najlepszy rzut: </h1>
+                <h2>Kto?</h2>
+                <h2>Ile?</h2>
+            </div>
+        </div>
+        <button class="results__send">Zapisz wyniki</button>
+    </div>
+</body>
+</html>

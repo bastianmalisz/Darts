@@ -18,7 +18,7 @@
 </head>
 
 <body>
-
+<div class="layer"></div>
     <div class="container gameWindow displayNone">
         <div class="gameWindow__headers">
             <h1>Gra numer:
@@ -96,10 +96,49 @@
             <button class="addPlayers__btnAdd">Dodaj graczy</button>
         </div>
     </div>
-    </div>
+
+    <div class="container results displayNone">
+            <h1>Wyniki</h1>
+            <div class="results__leaderboard">
+                <div class="results__leaderboard__box results__leaderboard__box--first">
+                    <h1>#1</h1>
+                    <h2 class="result_firstWho">Imie</h2>
+                    <h2 class="result_firstAmount">Wynik</h2>
+                </div>
+                <div class="results__leaderboard__box results__leaderboard__box--second">
+                        <h2>#2</h2>
+                        <h3 class="result_secondWho">Imie</h3>
+                        <h3 class="result_secondAmount">Wynik</h3>
+                </div>
+                <div class="results__leaderboard__box results__leaderboard__box--third">
+                        <h3>#3</h3>
+                        <h4 class="result_thirdWho">Imie</h4>
+                        <h4 class="result_thirdAmount">Wynik</h4>
+                </div>
+            </div>
+            <div class="results__facts">
+                <div class="results__facts__gametime">
+                    <h1> Gra trwała: </h1>
+                    <h2 class="resultGameDuration">Jak długo?</h2>
+                </div>
+                <div class="results__facts__bestThrow">
+                    <h1 > Najlepszy rzut: </h1>
+                    <h2 class = "resultBestThrowWho">Kto?</h2>
+                    <h2 class = "resultBestThrowAmount">Ile?</h2>
+                </div>
+            </div>
+            <button class="results__send">Zapisz wyniki</button>
+            <div class="password__popup displayNone">
+                <h1> Podaj hasło: </h1>
+                <input class="pw_send" type="password" required>
+                <button class="pw_send_btn">Ok</button>
+            </div>
+        </div>
+
     <!-- skrypty projektu -->
 
     <script src="./scripts/validate.js"></script>
+    <script src="./scripts/sendinfo.js"></script>
 </body>
 
 </html>

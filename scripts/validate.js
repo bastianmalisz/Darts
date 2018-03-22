@@ -11,9 +11,7 @@ let highestScore = 0;
 let secondScore = 0;
 let thirdScore = 0;
 let next = 0;
-let whoScores = "";
-let whoScores2 = "",
-  whoScores3 = "";
+let sortedScores = [];
 let firstPlace, secondPlace, thirdPlace;
 
 let date = new Date();
@@ -34,7 +32,7 @@ playerAmountBtn.addEventListener("click", function () {
     return playerAmountValue, addPlayers(playerAmountValue);
   }
 });
-
+let lastScores = [playerAmountValue];
 function addPlayers(playerAmountValue) {
   document.querySelector(".players").classList.remove("displayNone");
 
@@ -82,12 +80,14 @@ function drawMainPage() {
   document.querySelector(".gameWindow").classList.remove("displayNone");
 
   // icze czas gry
+  let countOnlySeconds = 0;
   let seconds = 0;
   let mins = 0;
   let secsAfter;
   let el = document.querySelector(".gameWindow--gameTime");
 
   function incrementSeconds() {
+    countOnlySeconds+=1;
     seconds += 1;
     secsAfter = seconds;
 
@@ -187,7 +187,8 @@ function drawMainPage() {
     tableCell.classList.add("table__cell");
     document
       .getElementById("table--tr" + lineNumber + "")
-      .appendChild(tableCell);
+      .appendChild(tableCell)
+      .setAttribute("data-colNum",clickCount);
     tableCell.id = "l" + lineNumber + "r" + clickCount;
     id = "l" + lineNumber + "r" + clickCount;
 
@@ -223,23 +224,76 @@ function drawMainPage() {
       for (let i = 1; i <= playerAmountValue; i++) {
         lastChilds[i] = cells[cells.length - i];
         lastRowResult[i - 1] = parseInt(lastChilds[i].textContent);
-
+        
+        lastScores[i-1] = ({
+        name: names[i-1],
+        score: lastRowResult[i-1]
+         });
+        
+         //sortuje po wynikach by uzyskac odpowiednie miejsca
+        function compare(a, b) {
+          
+          const n1 = a.score
+          const n2 = b.score;
+        
+          let comparison = 0;
+          if (n1 > n2) {
+            comparison = 1;
+          } else if (n1 < n2) {
+            comparison = -1;
+          }
+          return comparison;
+        }
+        
+        lastScores.sort(compare);
+        console.log(lastScores);
+        
         // if( lastRowResult[i-1] >  lastRowResult[i]){
         //     console.log("wiekszy jest "+lastRowResult[i-1])
         // }else{
         //     console.log("wiekszy jest "+lastRowResult[i+1])
         // }
         console.log(lastRowResult.length - 1, playerResult);
+        // Koniec gry
         if (lastRowResult[lastRowResult.length - 1] > 500) {
-          alert("KONIEC GRY");
+          endGame();
         }
       }
       clickCount = 0;
       newLine(lineNumber);
-      console.log("NOWA LINIA", lastRowResult);
+      console.log("NOWA LINIA", lastRowResult, lastScores);
       lineNumber++;
+
+
+
+      
     }
     next++;
     return clickCount, lineNumber;
+  }
+
+  function endGame(){
+    document.querySelector(".results__send").addEventListener("click",function(){
+      document.querySelector(".password__popup").classList.remove("displayNone");
+      document.querySelector(".layer").classList.add("darkLayer");
+      document.querySelector(".pw_send_btn").addEventListener("click",sendInfo);
+    });
+
+    document.querySelector(".gameWindow").classList.add("displayNone");
+    document.querySelector(".results").classList.remove("displayNone");
+
+    // Wpisywanie wynikow do rezultatow
+    document.querySelector(".resultBestThrowWho").innerHTML = highestScore;
+    document.querySelector(".resultBestThrowAmount").innerHTML = whoScores;
+    document.querySelector(".resultGameDuration").innerHTML = countOnlySeconds+" sekund";
+    
+        document.querySelector(".result_firstWho").innerHTML = lastScores[lastScores.length-1].name;
+        document.querySelector(".result_firstAmount").innerHTML = lastScores[lastScores.length-1].score;
+        document.querySelector(".result_secondWho").innerHTML = lastScores[lastScores.length-2].name;
+        document.querySelector(".result_secondAmount").innerHTML = lastScores[lastScores.length-2].score;
+        document.querySelector(".result_thirdWho").innerHTML = lastScores[lastScores.length-3].name;
+        document.querySelector(".result_thirdAmount").innerHTML = lastScores[lastScores.length-3].score;
+    
+      
   }
 }

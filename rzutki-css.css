@@ -11,13 +11,21 @@ body {
 
 
 /* Reusable classes */
+.darkLayer{
+    width: 100%;
 
+    height:100vh;
+    position:fixed;
+    z-index:4;
+    background-color: rgba(39, 39, 39, 0.821);
+}
 .displayNone {
     display: none !important;
 }
 
 .container {
-    margin: 0 30px;
+    margin: 0 auto;
+    width: 1200px;
     box-sizing: content-box;
 }
 
@@ -404,4 +412,139 @@ td {
     border-top: 1px solid rgba(165, 156, 156, 0.233);
     padding: 5px;
     width: 90%;
+}
+
+.results{
+    border-radius: 10px;
+    border: 1px solid rgba(226, 226, 226, 0.158);
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    box-shadow: 15px 30px 70px rgba(187, 185, 185, 0.438);
+}
+.results > h1{
+    font-weight: 300;
+}
+.results__leaderboard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width:70%;
+}
+.results__leaderboard__box{
+    
+    border:1px solid rgba(189, 189, 189, 0.336);
+    text-align: center;
+    margin:3px;
+    box-shadow: 5px 10px 20px rgba(187, 185, 185, 0.438);
+}
+.results__leaderboard__box--first{
+    font-weight:bolder;
+    background: #F7971E;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFD200, #F7971E);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFD200, #F7971E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+opacity:0.8;
+box-shadow: 5px 10px 20px rgba(73, 73, 73, 0.918);
+width:45%;
+}
+.results__leaderboard__box--second{
+    background: #8e9eab;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #eef2f3, #8e9eab);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #eef2f3, #8e9eab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    opacity:0.7;
+    box-shadow: 5px 10px 20px rgba(126, 125, 125, 0.521);
+    width:35%;
+}
+.results__leaderboard__box--third{
+    background: #e9d362;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #333333, #e9d362);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #333333, #e9d362); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    opacity:0.6;
+    box-shadow: 5px 10px 20px rgba(187, 185, 185, 0.438);
+    width:20%;
+}
+.results__facts{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width:70%;
+}
+.results__facts__gametime, .results__facts__bestThrow{
+    margin:40px;
+    width: 50%;
+    text-align: center;
+   
+   box-shadow: 5px 10px 20px rgba(187, 185, 185, 0.438);
+}
+.results__facts > div > h1{
+    font-weight: 200;
+}
+.results__send{
+    font-family: 'Source Code Pro', monospace;
+    font-size:2rem;
+    width: 25%;
+    margin: 10px;
+    border:0px;
+    box-shadow: 2px 5px 10px rgba(187, 185, 185, 0.438);
+    cursor: pointer;
+    transition: 0.35s all cubic-bezier(0.165, 0.84, 0.44, 1);
+    background-color: transparent;
+    border-radius: 10px;
+}
+.results__send:hover{
+    box-shadow: 0px 2px 5px rgba(100, 100, 100, 0.733);
+    transform: translateX(-1px) translateY(-1px);
+}
+.resultBestThrowWho,.resultGameDuration{
+    color: rgba(202, 29, 29, 0.74);
+}
+.password__popup{
+    border-radius: 10px;
+    border: 1px solid rgba(226, 226, 226, 0.158);
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    box-shadow: 15px 30px 70px rgba(187, 185, 185, 0.438);
+    width: 50%;
+    margin: 0 auto;
+    z-index:10;
+    background-color: white;
+    position: fixed;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pw_send{
+width:50%;
+font-size:2rem;
+}
+.pw_send_btn{
+width:10%;
+font-family: 'Source Code Pro', monospace;
+    font-size:2rem;
+    width: 25%;
+    margin: 10px;
+    border:0px;
+    box-shadow: 2px 5px 10px rgba(187, 185, 185, 0.438);
+    cursor: pointer;
+    transition: 0.35s all cubic-bezier(0.165, 0.84, 0.44, 1);
+    background-color: transparent;
+    border-radius: 10px;
+}
+.pw_send_btn:hover{
+    box-shadow: 0px 2px 5px rgba(100, 100, 100, 0.733);
+    transform: translateX(-1px) translateY(-1px);
+}
+.result_firstWho{
+    font-size:3rem;
+    color: rgba(202, 29, 29, 0.74);
+    text-shadow: 2px 0px 2px black;
+
+}
+.result_secondWho{
+    font-size:2rem;
+    color: rgba(202, 29, 29, 0.74);
 }
