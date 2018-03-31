@@ -4,4 +4,5 @@ Aplikacja pomagająca w zarządzaniu wyikami w grze Darts. Aplikacja zlicza punk
 # Wykorzystane technologie:
 Javascript ES6, ajax oraz do podstawowych zastosowań backendowych:  PHP i MySQL.
 
-
+# Live
+http://sebixowetesty.co.nf/
