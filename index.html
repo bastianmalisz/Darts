@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl_PL">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,500" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300" rel="stylesheet">
-
     <!-- Główny plik styli projektu -->
     <link href="rzutki-css.css" rel="stylesheet">
-    <title>Rzutki Game</title>
+    <title>Darts Game</title>
 </head>
 
 <body>
-<div class="layer"></div>
+    <div class="layer"></div>
     <div class="container gameWindow displayNone">
         <div class="gameWindow__headers">
             <h1>Gra numer:
@@ -38,6 +36,7 @@
 
                 </table>
                 <div class="controls">
+                    <div class="results__link"></div>
                     <button class="gameWindow__tableBox__btn">Dodaj wynik</button>
                     <input class="gameWindow__tableBox__input" type="number">
                 </div>
@@ -59,13 +58,13 @@
                         </div>
                         <div class="gameWindow__facts__fastestGame">
                             <h4>Najszybsza gra</h4>
-                            <h4 class="gameWindow__facts__fastestGame--when">Kiedy?</h4>
+
                             <h4 class="gameWindow__facts__fastestGame--howLong">Jak długo?</h4>
                         </div>
                         <div class="gameWindow__facts__bestPlayer">
                             <h4>Najlepszy gracz</h4>
                             <h4 class="gameWindow__facts__bestPlayer--who">Kto?</h4>
-                            <h4 class="gameWindow__facts__bestPlayer--who--avarage">jaka średnia miejsc?</h4>
+
                         </div>
                     </div>
 
@@ -74,13 +73,15 @@
             </div>
 
         </div>
+        <div class="resultsTable displayNone">
 
+            <button class="closeBTN"></button>
+
+            <iframe class="databaseInfoIframe" src="getinfo.php">
+                    
+            </iframe>
+        </div>
     </div>
-
-
-
-
-
 
     <div class="container playerAmount">
         <h1>Ilu graczy będzie grać?</h1>
@@ -98,47 +99,47 @@
     </div>
 
     <div class="container results displayNone">
-            <h1>Wyniki</h1>
-            <div class="results__leaderboard">
-                <div class="results__leaderboard__box results__leaderboard__box--first">
-                    <h1>#1</h1>
-                    <h2 class="result_firstWho">Imie</h2>
-                    <h2 class="result_firstAmount">Wynik</h2>
-                </div>
-                <div class="results__leaderboard__box results__leaderboard__box--second">
-                        <h2>#2</h2>
-                        <h3 class="result_secondWho">Imie</h3>
-                        <h3 class="result_secondAmount">Wynik</h3>
-                </div>
-                <div class="results__leaderboard__box results__leaderboard__box--third">
-                        <h3>#3</h3>
-                        <h4 class="result_thirdWho">Imie</h4>
-                        <h4 class="result_thirdAmount">Wynik</h4>
-                </div>
+        <h1>Wyniki</h1>
+        <div class="results__leaderboard">
+            <div class="results__leaderboard__box results__leaderboard__box--first">
+                <h1>#1</h1>
+                <h2 class="result_firstWho">Imie</h2>
+                <h2 class="result_firstAmount">Wynik</h2>
             </div>
-            <div class="results__facts">
-                <div class="results__facts__gametime">
-                    <h1> Gra trwała: </h1>
-                    <h2 class="resultGameDuration">Jak długo?</h2>
-                </div>
-                <div class="results__facts__bestThrow">
-                    <h1 > Najlepszy rzut: </h1>
-                    <h2 class = "resultBestThrowWho">Kto?</h2>
-                    <h2 class = "resultBestThrowAmount">Ile?</h2>
-                </div>
+            <div class="results__leaderboard__box results__leaderboard__box--second">
+                <h2>#2</h2>
+                <h3 class="result_secondWho">Imie</h3>
+                <h3 class="result_secondAmount">Wynik</h3>
             </div>
-            <button class="results__send">Zapisz wyniki</button>
-            <div class="password__popup displayNone">
-                <h1> Podaj hasło: </h1>
-                <input class="pw_send" type="password" required>
-                <button class="pw_send_btn">Ok</button>
+            <div class="results__leaderboard__box results__leaderboard__box--third">
+                <h3>#3</h3>
+                <h4 class="result_thirdWho">Imie</h4>
+                <h4 class="result_thirdAmount">Wynik</h4>
             </div>
         </div>
+        <div class="results__facts">
+            <div class="results__facts__gametime">
+                <h1> Gra trwała: </h1>
+                <h2 class="resultGameDuration">Jak długo?</h2>
+            </div>
+            <div class="results__facts__bestThrow">
+                <h1> Najlepszy rzut: </h1>
+                <h2 class="resultBestThrowWho">Kto?</h2>
+                <h2 class="resultBestThrowAmount">Ile?</h2>
+            </div>
+        </div>
+        <button class="results__send">Zapisz wyniki</button>
+        <div class="password__popup displayNone">
+            <h1> Wysłać dane na serwer? </h1>
+
+            <button class="pw_send_btn">Ok</button>
+        </div>
+    </div>
 
     <!-- skrypty projektu -->
-
     <script src="./scripts/validate.js"></script>
     <script src="./scripts/sendinfo.js"></script>
+
 </body>
 
 </html>

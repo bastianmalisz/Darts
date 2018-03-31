@@ -1,550 +1,781 @@
-html,
-body {
-    font-family: 'Source Code Pro', monospace;
-    font-size: 16px;
-    box-sizing: border-box;
-    position: relative;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-/* Reusable classes */
-.darkLayer{
-    width: 100%;
-
-    height:100vh;
-    position:fixed;
-    z-index:4;
-    background-color: rgba(39, 39, 39, 0.821);
-}
-.displayNone {
-    display: none !important;
-}
-
-.container {
-    margin: 0 auto;
-    width: 1200px;
-    box-sizing: content-box;
-}
-
-
-/* Main settings */
-
-.playerAmount {
-    border-radius: 10px;
-    border: 1px solid rgba(226, 226, 226, 0.158);
-    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 100px;
-    box-shadow: 15px 30px 70px rgba(187, 185, 185, 0.438);
-}
-
-.playerAmount>h1,
-.players>h1 {
-    text-align: center;
-    font-weight: 300;
-}
-
-.playerAmount--input {
-    background-color: transparent;
-    font-size: 3rem;
-    outline: 0;
-    text-align: center;
-    border: 0px;
-    border-radius: 5px;
-    border: 1px solid rgba(226, 226, 226, 0.158);
-}
-
-.playerAmount--input:focus {
-    box-shadow: 0px 0px 8px rgba(61, 61, 61, 0.747);
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.playerAmount--input::placeholder {
-    font-size: 1.5rem;
-    text-align: center;
-    opacity: 0.5;
-}
-
-button {
-    font-family: 'Montserrat', sans-serif;
-}
-
-.playerAmount-btn {
-    font-weight: 300;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-    border: 0px;
-    border-radius: 5px;
-    background-color: white;
-    padding-right: 20px;
-    padding-left: 20px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    cursor: pointer;
-}
-
-
-/* Add players popup */
-
-.players {
-    border-radius: 10px;
-    border: 1px solid rgba(226, 226, 226, 0.158);
-    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-    box-shadow: 15px 30px 70px rgba(187, 185, 185, 0.438);
-    margin-top: 10px;
-}
-
-.addPlayers {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.addPlayers__player {
-    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    margin-left: 15px;
-    border-radius: 10px;
-    width: calc(100% / 7);
-    box-shadow: 5px 5px 25px rgba(112, 112, 112, 0.475);
-    opacity: 0.8;
-}
-
-.addPlayers__player>h2 {
-    font-weight: 300;
-    font-size: 16px;
-}
-
-.addPlayers__player--name {
-    font-size: 2.1rem;
-    text-align: center;
-    border: 0px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    width: 90%;
-}
-
-.addPlayers__player--color {
-    border: 0px;
-    width: 40%;
-    margin-top: -10px;
-    margin-bottom: 20px;
-}
-
-.addPlayers__btnHandler {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.addPlayers__btnAdd {
-    font-size: 2.25rem;
-    font-weight: 300;
-    background-color: transparent;
-    padding: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border: 0px;
-    position: relative;
-    cursor: pointer;
-    outline: none;
-}
-
-.addPlayers__btnAdd:hover {
-    box-shadow: 0 0 5px black;
-    border-radius: 10px;
-}
-
-.gameWindow {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.gameWindow__inner {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
-    margin-top: 10px;
-    width: 95%;
-}
-
-.gameWindow__tableBox,
-.gameWindow__facts {
-    width: 48%;
-    margin: 10px;
-    display: flex;
-    flex-direction: row;
-}
-
-.gameWindow__headers {
-    font-size: 0.8rem;
-    font-family: 'Source Code Pro', monospace;
-    font-weight: 300;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    box-shadow: 5px 5px 25px rgba(184, 183, 183, 0.452);
-    width: 100%;
-}
-
-.gameWindow__headers>h1 {
-    margin-left: 50px;
-    margin-right: 50px;
-    color: rgba(105, 105, 105, 0.76)
-}
-
-table {
-    border: 1px solid rgba(165, 159, 159, 0.397);
-    width: 100%;
-    border-collapse: separate;
-}
-
-caption {
-    font-size: 1.6rem;
-}
-
-tr>th {
-    text-align: center;
-    font-size: 2.1rem;
-    font-weight: 500;
-    border-bottom: 1px solid rgba(165, 159, 159, 0.397);
-    border-left: 3px solid rgba(165, 159, 159, 0.247);
-}
-
-.gameWindow--gameTime {
-    color: rgba(202, 29, 29, 0.74);
-}
-
-.gameWindow__tableBox__table--tr-1 {
-    color: rgba(105, 105, 105, 0.76);
-    font-weight: 300;
-}
-
-td {
-    font-family: 'Indie Flower', cursive;
-    font-weight: 500;
-    font-size: 1.8rem;
-    text-align: center;
-    height: 20px;
-    border-collapse: separate;
-    padding-right: 10px;
-    opacity: 0.8;
-}
-
-.gameWindow__tableBox__input {
-    font-size: 1.5rem;
-    text-align: center;
-    border: 0px;
-    border-bottom: 1px solid rgba(139, 133, 133, 0.473);
-    border-left: 1px solid rgba(139, 133, 133, 0.473);
-    margin-top: 10px;
-    width: 100px;
-    height: 30px;
-    outline: none;
-    transition: 0.35s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    color: rgba(202, 29, 29, 0.74);
-}
-
-.gameWindow__tableBox__input:hover {
-    background-color: rgba(214, 205, 205, 0.39);
-}
-
-.gameWindow__tableBox__input:focus {
-    box-shadow: 0px 0px 4px rgba(145, 141, 141, 0.493);
-}
-
-.gameWindow__tableBox__btn {
-    font-size: 1rem;
-    margin-top: 10px;
-    width: 100px;
-    height: 50px;
-    border: 0px;
-    border-bottom: 1px solid rgba(139, 133, 133, 0.473);
-    border-left: 1px solid rgba(139, 133, 133, 0.473);
-    border-radius: 10px;
-    background-color: transparent;
-    box-shadow: 0px 3px 5px rgba(168, 161, 161, 0.219);
-    transition: 0.35s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
-}
-
-.gameWindow__tableBox__btn:hover {
-    box-shadow: 0px 1px 2px rgba(66, 65, 65, 0.74);
-}
-
-.tableCell__throwPTS {
-    font-size: 0.8rem;
-    color: slategrey;
-    position: relative;
-}
-
-.highestScore {
-    background-color: red;
-}
-
-.gameWindow__facts {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-}
-
-.bestWorst__row {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    align-items: baseline;
-    width: 100%;
-}
-
-.gameWindow__facts__bestThrow {
-    padding: 15px;
-    box-shadow: 5px 15px 35px rgba(184, 183, 183, 0.452);
-}
-
-.gameWindow__facts__leaderboard {
-    padding: 15px;
-    margin-left: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    flex-direction: column;
-    width: 100%;
-    box-shadow: 5px 15px 35px rgba(184, 183, 183, 0.452);
-}
-
-.gameWindow__facts__firstPlace {
-    font-size: 2rem;
-}
-
-.gameWindow__facts__bestThrow--who {
-    font-size: 2.2rem;
-    font-weight: 500;
-    color: rgba(105, 105, 105, 0.76);
-    font-weight: bold;
-}
-
-.gameWindow__facts__bestThrow--amount {
-    font-size: 2.4rem;
-    font-weight: 500;
-    color: rgba(202, 29, 29, 0.74);
-    font-weight: bold;
-}
-
-.gameWindow__facts__bestThrow2--who {
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: rgba(105, 105, 105, 0.76);
-}
-
-.gameWindow__facts__bestThrow2--amount {
-    font-size: 1.6rem;
-    font-weight: 500;
-    color: rgba(202, 29, 29, 0.74);
-}
-
-.gameWindow__facts__bestThrow3--who {
-    font-size: 1rem;
-    font-weight: 500;
-    color: rgba(105, 105, 105, 0.582);
-}
-
-.gameWindow__facts__bestThrow3--amount {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: rgba(202, 29, 29, 0.562);
-}
-
-.gameWindow--gameDay {
-    color: rgba(202, 29, 29, 0.74);
-}
-
-.gameWindow__facts__leaderboard>h3 {
-    color: rgba(202, 29, 29, 0.74);
-}
-
-
-/* Kontrolki gry */
-
-.controls {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin: 10px;
-}
-
-.gameWindow__facts__bestEverThrow {
-    border-left: 2px solid rgba(165, 156, 156, 0.336);
-    border-top: 1px solid rgba(165, 156, 156, 0.233);
-    padding: 5px;
-    width: 90%;
-}
-
-.gameWindow__facts__fastestGame {
-    border-left: 2px solid rgba(165, 156, 156, 0.336);
-    border-top: 1px solid rgba(165, 156, 156, 0.233);
-    padding: 5px;
-    width: 90%;
-}
-
-.gameWindow__facts__bestPlayer {
-    border-left: 2px solid rgba(165, 156, 156, 0.336);
-    border-top: 1px solid rgba(165, 156, 156, 0.233);
-    padding: 5px;
-    width: 90%;
-}
-
-.results{
-    border-radius: 10px;
-    border: 1px solid rgba(226, 226, 226, 0.158);
-    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    box-shadow: 15px 30px 70px rgba(187, 185, 185, 0.438);
-}
-.results > h1{
-    font-weight: 300;
-}
-.results__leaderboard{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width:70%;
-}
-.results__leaderboard__box{
+        html,
+    body {
+        font-family: 'Source Code Pro', monospace;
+        font-size: 16px;
+        box-sizing: border-box;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    /* Reusable classes */
     
-    border:1px solid rgba(189, 189, 189, 0.336);
-    text-align: center;
-    margin:3px;
-    box-shadow: 5px 10px 20px rgba(187, 185, 185, 0.438);
-}
-.results__leaderboard__box--first{
-    font-weight:bolder;
-    background: #F7971E;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #FFD200, #F7971E);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #FFD200, #F7971E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-opacity:0.8;
-box-shadow: 5px 10px 20px rgba(73, 73, 73, 0.918);
-width:45%;
-}
-.results__leaderboard__box--second{
-    background: #8e9eab;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #eef2f3, #8e9eab);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #eef2f3, #8e9eab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    opacity:0.7;
-    box-shadow: 5px 10px 20px rgba(126, 125, 125, 0.521);
-    width:35%;
-}
-.results__leaderboard__box--third{
-    background: #e9d362;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #333333, #e9d362);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #333333, #e9d362); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    opacity:0.6;
-    box-shadow: 5px 10px 20px rgba(187, 185, 185, 0.438);
-    width:20%;
-}
-.results__facts{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width:70%;
-}
-.results__facts__gametime, .results__facts__bestThrow{
-    margin:40px;
-    width: 50%;
-    text-align: center;
-   
-   box-shadow: 5px 10px 20px rgba(187, 185, 185, 0.438);
-}
-.results__facts > div > h1{
-    font-weight: 200;
-}
-.results__send{
-    font-family: 'Source Code Pro', monospace;
-    font-size:2rem;
-    width: 25%;
-    margin: 10px;
-    border:0px;
-    box-shadow: 2px 5px 10px rgba(187, 185, 185, 0.438);
-    cursor: pointer;
-    transition: 0.35s all cubic-bezier(0.165, 0.84, 0.44, 1);
-    background-color: transparent;
-    border-radius: 10px;
-}
-.results__send:hover{
-    box-shadow: 0px 2px 5px rgba(100, 100, 100, 0.733);
-    transform: translateX(-1px) translateY(-1px);
-}
-.resultBestThrowWho,.resultGameDuration{
-    color: rgba(202, 29, 29, 0.74);
-}
-.password__popup{
-    border-radius: 10px;
-    border: 1px solid rgba(226, 226, 226, 0.158);
-    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-    box-shadow: 15px 30px 70px rgba(187, 185, 185, 0.438);
-    width: 50%;
-    margin: 0 auto;
-    z-index:10;
-    background-color: white;
-    position: fixed;
-    display:flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
-
-.pw_send{
-width:50%;
-font-size:2rem;
-}
-.pw_send_btn{
-width:10%;
-font-family: 'Source Code Pro', monospace;
-    font-size:2rem;
-    width: 25%;
-    margin: 10px;
-    border:0px;
-    box-shadow: 2px 5px 10px rgba(187, 185, 185, 0.438);
-    cursor: pointer;
-    transition: 0.35s all cubic-bezier(0.165, 0.84, 0.44, 1);
-    background-color: transparent;
-    border-radius: 10px;
-}
-.pw_send_btn:hover{
-    box-shadow: 0px 2px 5px rgba(100, 100, 100, 0.733);
-    transform: translateX(-1px) translateY(-1px);
-}
-.result_firstWho{
-    font-size:3rem;
-    color: rgba(202, 29, 29, 0.74);
-    text-shadow: 2px 0px 2px black;
-
-}
-.result_secondWho{
-    font-size:2rem;
-    color: rgba(202, 29, 29, 0.74);
-}
+    .darkLayer {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        z-index: 4;
+        background-color: rgba(39, 39, 39, 0.821);
+    }
+    
+    .displayNone {
+        display: none !important;
+    }
+    
+    .container {
+        margin: 0 auto;
+        width: 1200px;
+        box-sizing: content-box;
+    }
+    /* Main settings */
+    
+    .playerAmount {
+        border-radius: 10px;
+        border: 1px solid rgba(226, 226, 226, 0.158);
+        background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+        box-shadow: 15px 30px 70px rgba(187, 185, 185, 0.438);
+    }
+    
+    .playerAmount>h1,
+    .players>h1 {
+        text-align: center;
+        font-weight: 300;
+    }
+    
+    .playerAmount--input {
+        background-color: transparent;
+        font-size: 3rem;
+        outline: 0;
+        text-align: center;
+        border: 0px;
+        border-radius: 5px;
+        border: 1px solid rgba(226, 226, 226, 0.158);
+    }
+    
+    .playerAmount--input:focus {
+        box-shadow: 0px 0px 8px rgba(61, 61, 61, 0.747);
+    }
+    
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    
+    .playerAmount--input::placeholder {
+        font-size: 1.5rem;
+        text-align: center;
+        opacity: 0.5;
+    }
+    
+    button {
+        font-family: 'Montserrat', sans-serif;
+    }
+    
+    .playerAmount-btn {
+        font-weight: 300;
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+        border: 0px;
+        border-radius: 5px;
+        background-color: white;
+        padding-right: 20px;
+        padding-left: 20px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        cursor: pointer;
+    }
+    /* Add players popup */
+    
+    .players {
+        border-radius: 10px;
+        border: 1px solid rgba(226, 226, 226, 0.158);
+        background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+        box-shadow: 15px 30px 70px rgba(187, 185, 185, 0.438);
+        margin-top: 10px;
+    }
+    
+    .addPlayers {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .addPlayers__player {
+        background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+        margin-left: 15px;
+        border-radius: 10px;
+        width: calc(100% / 7);
+        box-shadow: 5px 5px 25px rgba(112, 112, 112, 0.475);
+        opacity: 0.8;
+    }
+    
+    .addPlayers__player>h2 {
+        font-weight: 300;
+        font-size: 16px;
+    }
+    
+    .addPlayers__player--name {
+        font-size: 2.1rem;
+        text-align: center;
+        border: 0px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        width: 90%;
+    }
+    
+    .addPlayers__player--color {
+        border: 0px;
+        width: 40%;
+        margin-top: -10px;
+        margin-bottom: 20px;
+    }
+    
+    .addPlayers__btnHandler {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    .addPlayers__btnAdd {
+        font-size: 2.25rem;
+        font-weight: 300;
+        background-color: transparent;
+        padding: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 0px;
+        position: relative;
+        cursor: pointer;
+        outline: none;
+    }
+    
+    .addPlayers__btnAdd:hover {
+        box-shadow: 0 0 5px black;
+        border-radius: 10px;
+    }
+    
+    .gameWindow {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .gameWindow__inner {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        margin-top: 10px;
+        width: 95%;
+    }
+    
+    .gameWindow__tableBox,
+    .gameWindow__facts {
+        width: 48%;
+        margin: 10px;
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .gameWindow__headers {
+        font-size: 0.8rem;
+        font-family: 'Source Code Pro', monospace;
+        font-weight: 300;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        box-shadow: 5px 5px 25px rgba(184, 183, 183, 0.452);
+        width: 100%;
+    }
+    
+    .gameWindow__headers>h1 {
+        margin-left: 50px;
+        margin-right: 50px;
+        color: rgba(105, 105, 105, 0.76)
+    }
+    
+    table {
+        border: 1px solid rgba(165, 159, 159, 0.397);
+        width: 100%;
+        border-collapse: separate;
+    }
+    
+    caption {
+        font-size: 1.6rem;
+    }
+    
+    tr>th {
+        text-align: center;
+        font-size: 2.1rem;
+        font-weight: 500;
+        border-bottom: 1px solid rgba(165, 159, 159, 0.397);
+        border-left: 3px solid rgba(165, 159, 159, 0.247);
+    }
+    
+    .gameWindow--gameTime {
+        color: rgba(202, 29, 29, 0.74);
+    }
+    
+    .gameWindow__tableBox__table--tr-1 {
+        color: rgba(105, 105, 105, 0.76);
+        font-weight: 300;
+    }
+    
+    td {
+        font-family: 'Indie Flower', cursive;
+        font-weight: 500;
+        font-size: 1.8rem;
+        text-align: center;
+        height: 20px;
+        border-collapse: separate;
+        padding-right: 10px;
+        opacity: 0.8;
+    }
+    
+    .gameWindow__tableBox__input {
+        font-size: 1.5rem;
+        text-align: center;
+        border: 0px;
+        border-bottom: 1px solid rgba(139, 133, 133, 0.473);
+        border-left: 1px solid rgba(139, 133, 133, 0.473);
+        margin-top: 10px;
+        width: 100px;
+        height: 30px;
+        outline: none;
+        transition: 0.35s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        color: rgba(202, 29, 29, 0.74);
+    }
+    
+    .gameWindow__tableBox__input:hover {
+        background-color: rgba(214, 205, 205, 0.39);
+    }
+    
+    .gameWindow__tableBox__input:focus {
+        box-shadow: 0px 0px 4px rgba(145, 141, 141, 0.493);
+    }
+    
+    .gameWindow__tableBox__btn {
+        font-size: 1rem;
+        margin-top: 10px;
+        width: 100px;
+        height: 50px;
+        border: 0px;
+        border-bottom: 1px solid rgba(139, 133, 133, 0.473);
+        border-left: 1px solid rgba(139, 133, 133, 0.473);
+        border-radius: 10px;
+        background-color: transparent;
+        box-shadow: 0px 3px 5px rgba(168, 161, 161, 0.219);
+        transition: 0.35s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+    }
+    
+    .gameWindow__tableBox__btn:hover {
+        box-shadow: 0px 1px 2px rgba(66, 65, 65, 0.74);
+    }
+    
+    .tableCell__throwPTS {
+        font-size: 0.8rem;
+        color: slategrey;
+        position: relative;
+    }
+    
+    .highestScore {
+        background-color: red;
+    }
+    
+    .gameWindow__facts {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+    
+    .bestWorst__row {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        align-items: baseline;
+        width: 100%;
+    }
+    
+    .gameWindow__facts__bestThrow {
+        padding: 15px;
+        box-shadow: 5px 15px 35px rgba(184, 183, 183, 0.452);
+    }
+    
+    .gameWindow__facts__leaderboard {
+        padding: 15px;
+        margin-left: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        flex-direction: column;
+        width: 100%;
+        box-shadow: 5px 15px 35px rgba(184, 183, 183, 0.452);
+    }
+    
+    .gameWindow__facts__firstPlace {
+        font-size: 2rem;
+    }
+    
+    .gameWindow__facts__bestThrow--who {
+        font-size: 2.2rem;
+        font-weight: 500;
+        color: rgba(105, 105, 105, 0.76);
+        font-weight: bold;
+    }
+    
+    .gameWindow__facts__bestThrow--amount {
+        font-size: 2.4rem;
+        font-weight: 500;
+        color: rgba(202, 29, 29, 0.74);
+        font-weight: bold;
+    }
+    
+    .gameWindow__facts__bestThrow2--who {
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: rgba(105, 105, 105, 0.76);
+    }
+    
+    .gameWindow__facts__bestThrow2--amount {
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: rgba(202, 29, 29, 0.74);
+    }
+    
+    .gameWindow__facts__bestThrow3--who {
+        font-size: 1rem;
+        font-weight: 500;
+        color: rgba(105, 105, 105, 0.582);
+    }
+    
+    .gameWindow__facts__bestThrow3--amount {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: rgba(202, 29, 29, 0.562);
+    }
+    
+    .gameWindow--gameDay {
+        color: rgba(202, 29, 29, 0.74);
+    }
+    
+    .gameWindow__facts__leaderboard>h3 {
+        color: rgba(202, 29, 29, 0.74);
+    }
+    /* Kontrolki gry */
+    
+    .controls {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin: 10px;
+    }
+    
+    .gameWindow__facts__bestEverThrow {
+        border-left: 2px solid rgba(165, 156, 156, 0.336);
+        border-top: 1px solid rgba(165, 156, 156, 0.233);
+        padding: 5px;
+        width: 90%;
+    }
+    
+    .gameWindow__facts__fastestGame {
+        border-left: 2px solid rgba(165, 156, 156, 0.336);
+        border-top: 1px solid rgba(165, 156, 156, 0.233);
+        padding: 5px;
+        width: 90%;
+    }
+    
+    .gameWindow__facts__bestPlayer {
+        border-left: 2px solid rgba(165, 156, 156, 0.336);
+        border-top: 1px solid rgba(165, 156, 156, 0.233);
+        padding: 5px;
+        width: 90%;
+    }
+    
+    .results {
+        border-radius: 10px;
+        border: 1px solid rgba(226, 226, 226, 0.158);
+        background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        box-shadow: 15px 30px 70px rgba(187, 185, 185, 0.438);
+    }
+    
+    .results>h1 {
+        font-weight: 300;
+    }
+    
+    .results__leaderboard {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 70%;
+    }
+    
+    .databaseInfoIframe {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        border: 0px;
+    }
+    
+    .resultsTable {
+        position: fixed;
+        left: 5vw;
+        top: 5vh;
+        width: 90vw;
+        height: 90vh;
+        background-color: rgba(255, 255, 255, 0.863);
+        overflow: hidden;
+        border: 1px solid rgba(136, 130, 130, 0.425);
+        box-shadow: 15px 30px 70px rgba(187, 185, 185, 0.438);
+    }
+    
+    .closeBTN {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: 10px;
+        top: 0px;
+        outline: none;
+        border: 0px;
+        background-color: transparent;
+        cursor: pointer;
+        z-index: 999;
+    }
+    
+    .closeBTN:after {
+        content: '✖';
+        background-color: transparent;
+        outline: none;
+        border: 0px;
+        /* UTF-8 symbol */
+        font-size: 23px;
+    }
+    
+    .results__link {
+        position: relative;
+        top: -30%;
+        margin: 0 auto;
+        width: 64px;
+        height: 64px;
+        background: url("./images/table.png");
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        cursor: pointer;
+    }
+    
+    .results__leaderboard__box {
+        border: 1px solid rgba(189, 189, 189, 0.336);
+        text-align: center;
+        margin: 3px;
+        box-shadow: 5px 10px 20px rgba(187, 185, 185, 0.438);
+    }
+    
+    .results__leaderboard__box--first {
+        font-weight: bolder;
+        background: #F7971E;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #FFD200, #F7971E);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #FFD200, #F7971E);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        opacity: 0.8;
+        box-shadow: 5px 10px 20px rgba(73, 73, 73, 0.918);
+        width: 45%;
+    }
+    
+    .results__leaderboard__box--second {
+        background: #8e9eab;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #eef2f3, #8e9eab);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #eef2f3, #8e9eab);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        opacity: 0.7;
+        box-shadow: 5px 10px 20px rgba(126, 125, 125, 0.521);
+        width: 35%;
+    }
+    
+    .results__leaderboard__box--third {
+        background: #e9d362;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #333333, #e9d362);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #333333, #e9d362);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        opacity: 0.6;
+        box-shadow: 5px 10px 20px rgba(187, 185, 185, 0.438);
+        width: 20%;
+    }
+    
+    .results__facts {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 70%;
+    }
+    
+    .results__facts__gametime,
+    .results__facts__bestThrow {
+        margin: 40px;
+        width: 50%;
+        text-align: center;
+        box-shadow: 5px 10px 20px rgba(187, 185, 185, 0.438);
+    }
+    
+    .results__facts>div>h1 {
+        font-weight: 200;
+    }
+    
+    .gameWindow__facts__bestEverThrow--who {
+        color: rgba(105, 105, 105, 0.76);
+    }
+    
+    .gameWindow__facts__bestEverThrow--who--amount {
+        color: rgba(202, 29, 29, 0.74);
+    }
+    
+    .gameWindow__facts__fastestGame--howLong {
+        color: rgba(202, 29, 29, 0.74);
+    }
+    
+    .gameWindow__facts__bestPlayer--who {
+        color: rgba(202, 29, 29, 0.74);
+    }
+    
+    .results__send {
+        font-family: 'Source Code Pro', monospace;
+        font-size: 2rem;
+        width: 25%;
+        margin: 10px;
+        border: 0px;
+        box-shadow: 2px 5px 10px rgba(187, 185, 185, 0.438);
+        cursor: pointer;
+        transition: 0.35s all cubic-bezier(0.165, 0.84, 0.44, 1);
+        background-color: transparent;
+        border-radius: 10px;
+    }
+    
+    .results__send:hover {
+        box-shadow: 0px 2px 5px rgba(100, 100, 100, 0.733);
+        transform: translateX(-1px) translateY(-1px);
+    }
+    
+    .resultBestThrowWho,
+    .resultGameDuration {
+        color: rgba(202, 29, 29, 0.74);
+    }
+    
+    .password__popup {
+        border-radius: 10px;
+        border: 1px solid rgba(226, 226, 226, 0.158);
+        background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+        box-shadow: 15px 30px 70px rgba(187, 185, 185, 0.438);
+        width: 50%;
+        margin: 0 auto;
+        z-index: 10;
+        background-color: white;
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .pw_send {
+        width: 50%;
+        font-size: 2rem;
+    }
+    
+    .pw_send_btn {
+        width: 10%;
+        font-family: 'Source Code Pro', monospace;
+        font-size: 2rem;
+        width: 25%;
+        margin: 10px;
+        border: 0px;
+        box-shadow: 2px 5px 10px rgba(187, 185, 185, 0.438);
+        cursor: pointer;
+        transition: 0.35s all cubic-bezier(0.165, 0.84, 0.44, 1);
+        background-color: transparent;
+        border-radius: 10px;
+    }
+    
+    .pw_send_btn:hover {
+        box-shadow: 0px 2px 5px rgba(100, 100, 100, 0.733);
+        transform: translateX(-1px) translateY(-1px);
+    }
+    
+    .result_firstWho {
+        font-size: 3rem;
+        color: rgba(202, 29, 29, 0.74);
+        text-shadow: 2px 0px 2px black;
+    }
+    
+    .result_secondWho {
+        font-size: 2rem;
+        color: rgba(202, 29, 29, 0.74);
+    }
+    
+    #result {
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        z-index: 999;
+    }
+    
+    @media screen and (max-width: 480px) {
+        .container {
+            width: 95vw
+        }
+        .gameWindow__inner {
+            flex-direction: column;
+        }
+        .addPlayers {
+            flex-direction: column;
+        }
+        .addPlayers__player {
+            width: calc(100% / 1.5);
+        }
+        .gameWindow__headers>h1 {
+            font-size: 0.7rem;
+            margin-left: 2px;
+            margin-right: 2px;
+            color: rgba(105, 105, 105, 0.76);
+        }
+        .table {
+            width: none;
+        }
+        border: 0px;
+        box-shadow: 2px 5px 10px rgba(187,
+        185,
+        185,
+        0.438);
+        cursor: pointer;
+        transition: 0.35s all cubic-bezier(0.165,
+        0.84,
+        0.44,
+        1);
+        background-color: transparent;
+        border-radius: 10px;
+    }
+    
+    .pw_send_btn:hover {
+        box-shadow: 0px 2px 5px rgba(100, 100, 100, 0.733);
+        transform: translateX(-1px) translateY(-1px);
+    }
+    
+    .result_firstWho {
+        font-size: 3rem;
+        color: rgba(202, 29, 29, 0.74);
+        text-shadow: 2px 0px 2px black;
+    }
+    
+    .result_secondWho {
+        font-size: 2rem;
+        color: rgba(202, 29, 29, 0.74);
+    }
+    
+    #result {
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        z-index: 999;
+    }
+    
+    @media screen and (max-width: 480px) {
+        .container {
+            width: 95vw
+        }
+        .gameWindow__inner {
+            flex-direction: column;
+        }
+        .addPlayers {
+            flex-direction: column;
+        }
+        .addPlayers__player {
+            width: calc(100% / 1.5);
+        }
+        .gameWindow__headers>h1 {
+            font-size: 0.7rem;
+            margin-left: 2px;
+            margin-right: 2px;
+            color: rgba(105, 105, 105, 0.76);
+        }
+        .table {
+            width: none;
+        }
+        .gameWindow__tableBox,
+        .gameWindow__facts {
+            width: 100%;
+        }
+        caption {
+            font-size: 1rem;
+        }
+        tr>th {
+            font-size: 1.3rem;
+        }
+        .results__link {
+            top: 0;
+        }
+        td {
+            font-size: 1.15rem;
+        }
+        .gameWindow__facts__bestThrow--who {
+            font-size: 1.5rem;
+        }
+        .gameWindow__facts__bestThrow--amount {
+            font-size: 1.7rem;
+        }
+        h4 {
+            font-size: 0.88rem;
+            -webkit-margin-before: .5em;
+            -webkit-margin-after: .5em;
+        }
+        .gameWindow__facts__leaderboard>h3 {
+            text-align: center;
+        }
+        .results__leaderboard {
+            width: 80%;
+        }
+        .result_firstWho {
+            font-size: 2rem;
+        }
+        .results__facts>div>h1 {
+            font-size: 1.5rem;
+        }
+        .results__facts__gametime,
+        .results__facts__bestThrow {
+            margin: 5px;
+        }
+        .results__send {
+            width: 60%;
+        }
+        .password__popup {
+            width: 90%;
+        }
+        body>div.container.results>div.password__popup>h1 {
+            text-align: center;
+            font-size: 1.1em;
+        }
