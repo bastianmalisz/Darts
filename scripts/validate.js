@@ -55,7 +55,13 @@ function addPlayers(playerAmountValue) {
         createPlayerBox[i]
             .appendChild(createTextInput)
             .classList.add("addPlayers__player--name");
+<<<<<<< HEAD
         for (let j = 0; j < document.querySelectorAll(".addPlayers__player--name").length; j++) {
+=======
+        for (
+            let j = 0; j < document.querySelectorAll(".addPlayers__player--name").length; j++
+        ) {
+>>>>>>> 7592be8af4a53bcc796e0d78f65df48825314a01
             document
                 .querySelectorAll(".addPlayers__player--name")[j].setAttribute("type", "text");
         }
@@ -66,8 +72,17 @@ function addPlayers(playerAmountValue) {
         .addEventListener("click", getNames);
 
     function getNames() {
+<<<<<<< HEAD
         for (let i = 0; i < document.querySelectorAll(".addPlayers__player--name").length; i++) {
             names[i] = document.querySelectorAll(".addPlayers__player--name")[i].value;
+=======
+        for (
+            let i = 0; i < document.querySelectorAll(".addPlayers__player--name").length; i++
+        ) {
+            names[i] = document.querySelectorAll(".addPlayers__player--name")[
+                i
+            ].value;
+>>>>>>> 7592be8af4a53bcc796e0d78f65df48825314a01
         }
         drawMainPage();
     }
@@ -77,8 +92,13 @@ function drawMainPage(results) {
     document.querySelector(".players").classList.add("displayNone");
     document.querySelector(".gameWindow").classList.remove("displayNone");
 
+<<<<<<< HEAD
     // licze czas gry
     countOnlySeconds = 0;
+=======
+    // icze czas gry
+    let countOnlySeconds = 0;
+>>>>>>> 7592be8af4a53bcc796e0d78f65df48825314a01
     let seconds = 0;
     let mins = 0;
     let secsAfter;
@@ -126,6 +146,10 @@ function drawMainPage(results) {
     // Tworzę wiersz do przechowywania punktów
     function newLine(lineNumber) {
         lineNumber++;
+<<<<<<< HEAD
+=======
+        console.log(lineNumber);
+>>>>>>> 7592be8af4a53bcc796e0d78f65df48825314a01
         document
             .querySelector(".gameWindow__tableBox__table")
             .appendChild(tableRow[lineNumber]);
@@ -150,8 +174,16 @@ function drawMainPage(results) {
         });
 
     function recordTable(lineNumber) {
+<<<<<<< HEAD
         clickCount++;
         itemCount = clickCount;
+=======
+        // Przy okazji tworzenia nowych komorek mogę oznaczyć te, które mają największą i najmniejszą wartość
+
+        clickCount++;
+        itemCount = clickCount;
+        // console.log(lineNumber)
+>>>>>>> 7592be8af4a53bcc796e0d78f65df48825314a01
         let tableCell = document.createElement("td");
         let tableCellDiv = document.createElement("div");
         let throwScore = parseInt(
@@ -162,6 +194,7 @@ function drawMainPage(results) {
         if (throwScore > highestScore) {
             highestScore = throwScore;
             whoScores = names[clickCount - 1];
+<<<<<<< HEAD
         }
 
         // Aktualizacja wyniku w tabeli rekordow
@@ -306,3 +339,174 @@ function run() {
     )
 }
 run();
+=======
+        }
+
+        // Aktualizacja wyniku w tabeli rekordow
+
+        document.querySelector(
+            ".gameWindow__facts__bestThrow--who"
+        ).innerHTML = whoScores;
+        document.querySelector(
+            ".gameWindow__facts__bestThrow--amount"
+        ).innerHTML = highestScore;
+
+        console.log(
+            "rekord wynosi: " + highestScore,
+            "rekord nalezy do: " + whoScores,
+            "Ostatni rzut: " + throwScore
+        );
+        tableCell.classList.add("table__cell");
+        document
+            .getElementById("table--tr" + lineNumber + "")
+            .appendChild(tableCell)
+            .setAttribute("data-colNum", clickCount);
+        tableCell.id = "l" + lineNumber + "r" + clickCount;
+        id = "l" + lineNumber + "r" + clickCount;
+
+        if (lineNumber > 1) {
+            tableCell.innerHTML =
+                parseInt(throwScore) +
+                parseInt(
+                    document.querySelector("#l" + (lineNumber - 1) + "r" + clickCount)
+                    .textContent
+                );
+        } else {
+            tableCell.innerHTML = throwScore;
+        }
+
+        let playerResult = [];
+
+        //Liczenie wyniku obecnego kazdego z graczy i przypisywanie im
+
+        console.log(
+            clickCount,
+            playerAmountValue,
+            lineNumber,
+            itemCount,
+            next,
+            playerResult
+        );
+        if (clickCount == parseInt(playerAmountValue)) {
+            let cells = document.querySelectorAll(".table__cell");
+            let lastChilds = [];
+
+
+            // Generuje do tablicy ostatnie element z klasy table__cells (wszystkie komorki) zeby zapisywac je do tablicy wyników i potem konczyc gre
+            for (let i = 1; i <= playerAmountValue; i++) {
+                lastChilds[i] = cells[cells.length - i];
+                lastRowResult[i - 1] = parseInt(lastChilds[i].textContent);
+
+
+                // if( lastRowResult[i-1] >  lastRowResult[i]){
+                //     console.log("wiekszy jest "+lastRowResult[i-1])
+                // }else{
+                //     console.log("wiekszy jest "+lastRowResult[i+1])
+                // }
+                console.log(lastRowResult.length - 1, playerResult);
+                // Koniec gry
+                if (lastRowResult[i - 1] > 500) {
+                    endGame();
+                }
+            }
+            clickCount = 0;
+            newLine(lineNumber);
+            console.log("NOWA LINIA", lastRowResult, lastScores);
+            lineNumber++;
+        }
+        next++;
+        return clickCount, lineNumber;
+    }
+
+    function endGame(results) {
+        document
+            .querySelector(".results__send")
+            .addEventListener("click", function(results) {
+                document
+                    .querySelector(".password__popup")
+                    .classList.remove("displayNone");
+                document.querySelector(".layer").classList.add("darkLayer");
+                document
+                    .querySelector(".pw_send_btn")
+                    .addEventListener("click", sendInfo);
+            });
+        drawResults();
+
+
+
+
+
+
+        function drawResults() {
+
+            results = [];
+            for (let i = 0; i < playerAmountValue; i++) {
+                results.push({
+                    name: names[i],
+                    score: lastRowResult[i]
+                })
+
+            }
+
+            // use slice() to copy the array and not just make a reference
+            var byScore = results.slice(0);
+            byScore.sort(function(a, b) {
+                return a.score - b.score;
+            });
+            console.log('by date:');
+            console.log(byScore);
+
+
+
+
+
+            const lastRowCells = document.querySelectorAll(".table__cell");
+            let lastRowChildsNumber = [];
+            for (let i = 1; i <= playerAmountValue; i++) {
+                lastRowChildsNumber[i - 1] = lastRowCells[lastRowCells.length - i].dataset.colnum;
+            }
+            console.log(lastRowChildsNumber);
+
+            // console.log("POSORTOWANE KLUCZE" + keysSorted);
+            document.querySelector(".gameWindow").classList.add("displayNone");
+            document.querySelector(".results").classList.remove("displayNone");
+
+            // Wpisywanie wynikow do rezultatow
+            document.querySelector(".resultBestThrowWho").innerHTML = highestScore;
+            document.querySelector(".resultBestThrowAmount").innerHTML = whoScores;
+            document.querySelector(".resultGameDuration").innerHTML =
+                countOnlySeconds + " sekund";
+
+
+            let cells = document.querySelectorAll(".table__cell");
+
+            for (let i = 0; i < cells.length; i++) {
+                if (cells[i].innerText == byScore[byScore.length - 1].score) {
+                    document.querySelector(".result_firstWho").innerHTML = names[(parseInt(cells[i].dataset.colnum) - 1)];
+                }
+            }
+
+
+
+            document.querySelector(".result_firstAmount").innerHTML =
+                byScore[byScore.length - 1].score;
+
+            for (let i = 0; i < cells.length; i++) {
+                if (cells[i].innerText == byScore[byScore.length - 2].score) {
+                    document.querySelector(".result_secondWho").innerHTML = names[(parseInt(cells[i].dataset.colnum) - 1)];
+                }
+            }
+            document.querySelector(".result_secondAmount").innerHTML =
+                byScore[byScore.length - 2].score;
+            for (let i = 0; i < cells.length; i++) {
+                if (cells[i].innerText == byScore[byScore.length - 3].score) {
+                    document.querySelector(".result_thirdWho").innerHTML = names[(parseInt(cells[i].dataset.colnum) - 1)];
+                }
+            }
+            document.querySelector(".result_thirdAmount").innerHTML =
+                byScore[byScore.length - 3].score;
+        }
+    }
+
+}
+>>>>>>> 7592be8af4a53bcc796e0d78f65df48825314a01
